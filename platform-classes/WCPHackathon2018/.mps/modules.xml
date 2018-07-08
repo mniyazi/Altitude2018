@@ -2,7 +2,7 @@
 <project version="4">
   <component name="MPSProject">
     <projectModules>
-      <modulePath path="$PROJECT_DIR$/solutions/com.workday.workdog/com.workday.workdog.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/solutions/WCPApplication/WCPApplication.msd" folder="" />
     </projectModules>
   </component>
 </project>

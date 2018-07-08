@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="com.workday.workdog" uuid="75354ebb-25eb-4bd5-a024-a52ad2e1a297" moduleVersion="0" compileInMPS="true">
+<solution name="WCPApplication" uuid="b7d6c40c-06a9-4696-bca1-6d4201453cc3" moduleVersion="0" compileInMPS="true">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
@@ -27,7 +27,7 @@
     <language slang="l:9ded098b-ad6a-4657-bfd9-48636cfe8bc3:jetbrains.mps.lang.traceable" version="0" />
   </languageVersions>
   <dependencyVersions>
-    <module reference="75354ebb-25eb-4bd5-a024-a52ad2e1a297(com.workday.workdog)" version="0" />
+    <module reference="b7d6c40c-06a9-4696-bca1-6d4201453cc3(WCPApplication)" version="0" />
   </dependencyVersions>
 </solution>
 
