@@ -37,7 +37,7 @@
                     },
                     {
                         "outboundPath":"rewardTypeId",
-                        "value":"${rewardPost.ofType.id}"
+                        "value":"${rewardPost.ofType.rewardName}"
                     }
                 ]
             }
@@ -63,15 +63,29 @@
                     "label": "Reward Type",
                     "values": "${rewardTypeData.data}",
                     "idKey": "id",
-                    "displayKey": "name",
-                    "valueOutBinding": "rewardPost.ofType.id",
+                    "displayKey": "rewardName",
+                    "valueOutBinding": "rewardPost.ofType.rewardName",
                     "required":"true"
                 },
                 {
                     "type": "text",
-                    "id": "name",
-                    "label": "Reward Name",
-                    "valueOutBinding": "rewardPost.name",
+                    "id": "id",
+                    "label": "Reward ID",
+                    "valueOutBinding": "rewardPost.id",
+                    "required": "true"
+                },
+                {
+                    "type": "date",
+                    "id": "date",
+                    "label": "Reward Grant Date",
+                    "valueOutBinding": "rewardPost.date",
+                    "required": "true"
+                },
+                {
+                    "type": "text",
+                    "id": "code",
+                    "label": "Reward Code",
+                    "valueOutBinding": "rewardPost.code",
                     "required": "true"
                 }
 

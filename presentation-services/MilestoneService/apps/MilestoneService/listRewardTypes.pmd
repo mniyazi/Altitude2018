@@ -62,20 +62,9 @@
                             "cellTemplate": {
                                 "id":"nameCell",
                                 "type":"text",
-                                "value": "${rewardType.name}"
+                                "value": "${rewardType.rewardName}"
                             },
                             "label":"Reward Type Name"
-                        },
-                        {
-                            "type": "column",
-                            "id": "cost",
-                            "columnId": "cost",
-                            "cellTemplate": {
-                                "id":"numberCell",
-                                "type":"number",
-                                "value": "${rewardType.cost}"
-                            },
-                            "label":"Cost"
                         }
 
                     ]

@@ -32,13 +32,6 @@
             "horizontal": false,
             "children": [
                 {
-                    "type": "text",
-                    "id": "rewardCondition",
-                    "label": "Reward Condition",
-                    "valueOutBinding": "rewardConditionPost.name",
-                    "required": "true"
-                },
-                {
                     "type": "date",
                     "id": "tenure",
                     "label": "Tenure",

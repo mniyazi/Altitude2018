@@ -63,14 +63,47 @@
                     "columns": [
                         {
                             "type": "column",
-                            "id": "name",
-                            "columnId": "name",
+                            "id": "type",
+                            "columnId": "type",
                             "cellTemplate": {
-                                "id":"nameCell",
+                                "id":"typeCell",
                                 "type":"text",
-                                "value": "${reward.ofType.id}"
+                                "value": "${reward.ofType.rewardName}"
                             },
                             "label":"Reward Type Name"
+                        },
+                        {
+                            "type": "column",
+                            "id": "id",
+                            "columnId": "id",
+                            "cellTemplate": {
+                                "id":"idCell",
+                                "type":"text",
+                                "value": "${reward.id}"
+                            },
+                            "label":"Reward ID"
+                        },
+                        {
+                            "type": "column",
+                            "id": "date",
+                            "columnId": "date",
+                            "cellTemplate": {
+                                "id":"dateCell",
+                                "type":"date",
+                                "value": "${reward.date}"
+                            },
+                            "label":"Reward Grant Date"
+                        },
+                        {
+                            "type": "column",
+                            "id": "code",
+                            "columnId": "code",
+                            "cellTemplate": {
+                                "id":"codeCell",
+                                "type":"text",
+                                "value": "${reward.code}"
+                            },
+                            "label":"Reward Code"
                         }
 
                     ]
