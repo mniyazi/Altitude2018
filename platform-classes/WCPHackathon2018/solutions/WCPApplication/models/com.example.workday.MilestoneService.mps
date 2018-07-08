@@ -8,6 +8,12 @@
   <imports />
   <registry>
     <language id="fd8f04d0-be0c-42ab-8ec1-d83c74435069" name="com.workday.yp.services">
+      <concept id="5058063742344900284" name="com.workday.yp.services.structure.ResourceReferenceType" flags="ng" index="23Wvig">
+        <child id="5058063742344900286" name="reference" index="23Wvii" />
+      </concept>
+      <concept id="5058063742344900285" name="com.workday.yp.services.structure.ResourceReferenceInReferenceType" flags="ng" index="23Wvih">
+        <reference id="5058063742344900361" name="resource" index="23Wvk_" />
+      </concept>
       <concept id="7605750031045377566" name="com.workday.yp.services.structure.YpServiceResource" flags="ig" index="1rrjd5">
         <property id="7155380407799380764" name="wid" index="2cTJYd" />
       </concept>
@@ -46,23 +52,9 @@
   </node>
   <node concept="NPj7J" id="19XKmaodEjR">
     <property role="TrG5h" value="RewardType" />
-    <node concept="UVK7p" id="19XKmaodEmd" role="1Qy886">
-      <property role="TrG5h" value="withCondition" />
-      <node concept="1EWBeH" id="19XKmaodEn9" role="1Eahxe" />
-      <node concept="NKuOo" id="19XKmaodGzZ" role="UVKaB">
-        <ref role="NKuPZ" node="19XKmaodEmx" resolve="RewardCondition" />
-      </node>
-    </node>
-    <node concept="UVK7p" id="19XKmaodGAP" role="1Qy886">
-      <property role="TrG5h" value="sendMessage" />
-      <node concept="1EWBeH" id="19XKmaodGBp" role="1Eahxe" />
-      <node concept="NKuOo" id="19XKmaodGBu" role="UVKaB">
-        <ref role="NKuPZ" node="19XKmaodGAa" resolve="Notification" />
-      </node>
-    </node>
-    <node concept="UVK7u" id="19XKmaodEkT" role="1Qy886">
+    <node concept="UVK7u" id="3vcrev02aiO" role="1Qy886">
       <property role="TrG5h" value="rewardName" />
-      <node concept="UITf5" id="19XKmaodElp" role="UVKaB" />
+      <node concept="UITf5" id="3vcrev02ajj" role="UVKaB" />
     </node>
     <node concept="1EWBey" id="19XKmaodEjS" role="1Ean_r" />
   </node>
@@ -77,6 +69,38 @@
   <node concept="NPj7J" id="19XKmaodGAa">
     <property role="TrG5h" value="Notification" />
     <node concept="1EWBey" id="19XKmaodGAb" role="1Ean_r" />
+  </node>
+  <node concept="NPj7J" id="3vcrev027Vq">
+    <property role="TrG5h" value="Reward" />
+    <node concept="UVK7p" id="3vcrev027Zm" role="1Qy886">
+      <property role="TrG5h" value="awardTo" />
+      <node concept="1EWBeH" id="3vcrev02acE" role="1Eahxe" />
+      <node concept="23Wvig" id="3vcrev02acJ" role="UVKaB">
+        <node concept="23Wvih" id="3vcrev02acI" role="23Wvii">
+          <ref role="23Wvk_" node="19XKmaodEiE" resolve="Worker" />
+        </node>
+      </node>
+    </node>
+    <node concept="UVK7p" id="3vcrev02acY" role="1Qy886">
+      <property role="TrG5h" value="ofType" />
+      <node concept="1EWBeH" id="3vcrev02ad_" role="1Eahxe" />
+      <node concept="NKuOo" id="3vcrev02adE" role="UVKaB">
+        <ref role="NKuPZ" node="19XKmaodEjR" resolve="RewardType" />
+      </node>
+    </node>
+    <node concept="UVK7u" id="3vcrev027W8" role="1Qy886">
+      <property role="TrG5h" value="id" />
+      <node concept="UITf5" id="3vcrev027X2" role="UVKaB" />
+    </node>
+    <node concept="UVK7u" id="3vcrev027X9" role="1Qy886">
+      <property role="TrG5h" value="date" />
+      <node concept="3$LMTR" id="3vcrev027YP" role="UVKaB" />
+    </node>
+    <node concept="UVK7u" id="3vcrev027YW" role="1Qy886">
+      <property role="TrG5h" value="code" />
+      <node concept="UITf5" id="3vcrev027Zf" role="UVKaB" />
+    </node>
+    <node concept="1EWBey" id="3vcrev027Vr" role="1Ean_r" />
   </node>
 </model>
 
