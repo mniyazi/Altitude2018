@@ -3,7 +3,7 @@
     "endPoints": [
 
         {
-            "name" : "rewardData",
+            "name" : "rewardsData",
             "baseUrlType" : "platform-class",
             "url" : "rewards",
             "authType" : "sso"
@@ -20,9 +20,9 @@
     "outboundData": {
         "outboundEndPoints": [
             {
-                "name" : "rewardPost",
+                "name" : "rewardsPost",
                 "baseUrlType" : "function-service",
-                "url" : "520048e7-7fed-4fab-9cbf-4aed990abd88",
+                "url" : "71d57c52-2feb-4046-88c9-8994d333418a/discount?date=2017-15-07&type=${rewardsPost.ofType.id}&years=${rewardsPost.condition}",
                 "authType" : "sso"
             }
         ]
@@ -37,7 +37,7 @@
             "headerSize":"STANDARD"
         },
         "body": {
-            "id":"grantRewardId",
+            "id":"grantRewardsId",
             "type": "section",
             "horizontal": false,
             "children": [
@@ -45,7 +45,8 @@
                     "type": "date",
                     "id": "date",
                     "label": "Reward Grant Date",
-                    "valueOutBinding": "rewardPost.date",
+                    "valueOutBinding": "rewardsPost.date",
+                    "value": "${date:getTodaysDateFormatted(date:getDateTimeZone('America/New_York'),'yyyy-MM-dd')}",
                     "required": "true"
                 },
                 {
@@ -55,8 +56,15 @@
                     "values": "${rewardTypeData.data}",
                     "idKey": "id",
                     "displayKey": "rewardName",
-                    "valueOutBinding": "rewardPost.ofType.rewardName",
+                    "valueOutBinding": "rewardsPost.ofType.rewardName",
                     "required":"true"
+                },
+                {
+                    "type": "number",
+                    "id": "conditionAnniversary",
+                    "label": "Anniversary Years",
+                    "valueOutBinding": "rewardsPost.condition",
+                    "required": "false"
                 }
             ]
         },

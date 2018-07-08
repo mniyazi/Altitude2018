@@ -27,12 +27,22 @@
                         },
 
                         {
-                            "id" : "maintainBreedsButton",
+                            "id" : "maintainRewardTypesButton",
                             "type": "button",
                             "label": "Maintain Reward Types",
                             "action": "LINK",
                             "taskReference": {
-                                "taskId": "listRewardsTypes"
+                                "taskId": "listRewardTypes"
+                            }
+                        },
+
+                        {
+                            "id" : "maintainRewardsButton",
+                            "type": "button",
+                            "label": "View Past Rewards",
+                            "action": "LINK",
+                            "taskReference": {
+                                "taskId": "listRewards"
                             }
                         }
                     ]
@@ -47,12 +57,12 @@
                             "value": "<h1>Self-Service Tasks </h1>"
                         },
                         {
-                            "id" : "grantRewardButton",
+                            "id" : "grantRewardsButton",
                             "type": "button",
-                            "label": "Grant Reward",
+                            "label": "Grant Rewards",
                             "action": "LINK",
                             "taskReference": {
-                                "taskId": "grantReward"
+                                "taskId": "grantRewards"
                             }
                         }
 
