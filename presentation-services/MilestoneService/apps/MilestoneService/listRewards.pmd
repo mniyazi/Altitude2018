@@ -1,44 +1,50 @@
 {
-    "id": "viewLocationPolicies",
+    "id" : "listRewards",
     "endPoints" : [
         {
-            "name" : "policyData",
+            "name" : "rewardData",
             "baseUrlType" : "platform-class",
-            "url" : "locationPolicys",
+            "url" : "rewards",
             "authType" : "sso"
-
-        } ],
+        },
+        {
+            "name" : "rewardTypeData",
+            "baseUrlType" : "platform-class",
+            "url" : "rewardTypes",
+            "authType" : "sso"
+        }
+    ],
     "presentation" : {
         "title": {
             "type": "title",
-            "label": "Maintain Location Policies"
+            "label": "Rewards"
         },
         "header":{
             "type":"header",
             "headerSize":"STANDARD"
         },
         "body" : {
-            "id":"locationPoliciesBody",
+            "id" : "myRewardsBody",
             "type" : "section",
             "children" : [
                 {
-                    "id":"navigationButtons",
+                    "id" : "navigationButtons",
                     "type": "section",
                     "horizontal": true,
                     "children": [
                         {
-                            "id":"addPolicyButton",
+                            "id":"registerRewardButton",
                             "type": "button",
-                            "label": "Add Policy",
+                            "label": "Add Reward",
                             "action": "PRIMARY",
                             "taskReference": {
-                                "taskId": "createPolicy"
+                                "taskId": "addReward"
                             }
                         },
                         {
-                            "id":"returnToWorkdogButton",
+                            "id":"returnToMilestoneButton",
                             "type": "button",
-                            "label": "Return to Workdog",
+                            "label": "Return to Milestones",
                             "action": "SECONDARY",
                             "taskReference": {
                                 "taskId": "adminLandingPage"
@@ -51,61 +57,55 @@
                 {
                     "type" : "grid",
                     "gridType": "LIST",
-                    "id" : "policies",
-                    "rows": "${policyData.data}",
-                    "rowVariableName": "policy",
+                    "id" : "rewards",
+                    "rows": "${rewardData.data}",
+                    "rowVariableName": "reward",
                     "columns": [
                         {
                             "type": "column",
-                            "id": "locationDescriptor",
-                            "columnId": "locationDescriptor",
+                            "id": "type",
+                            "columnId": "type",
                             "cellTemplate": {
-                                "id":"locationCell",
+                                "id":"typeCell",
                                 "type":"text",
-                                "value": "${policy.forLocation.descriptor}"
+                                "value": "${reward.ofType.rewardName}"
                             },
-                            "label":"Location"
+                            "label":"Reward Type Name"
                         },
                         {
                             "type": "column",
-                            "id": "maxDogs",
-                            "columnId": "maxDogs",
+                            "id": "id",
+                            "columnId": "id",
                             "cellTemplate": {
-                                "id":"maxDogsCell",
+                                "id":"idCell",
                                 "type":"text",
-                                "value": "${policy.maxDogs}"
+                                "value": "${reward.id}"
                             },
-                            "label":"Max Dogs per Day"
+                            "label":"Reward ID"
                         },
                         {
                             "type": "column",
-                            "id": "allowsDogs",
-                            "columnId": "allowsDogs",
+                            "id": "date",
+                            "columnId": "date",
                             "cellTemplate": {
-                                "id":"allowdDogCell",
-                                "type":"text",
-                                "value": "${policy.allowsDogs}"
+                                "id":"dateCell",
+                                "type":"date",
+                                "value": "${reward.date}"
                             },
-                            "label":"Allows Dogs"
+                            "label":"Reward Grant Date"
                         },
                         {
                             "type": "column",
-                            "id": "editPolicy",
-                            "columnId": "editPolicyColumn",
+                            "id": "code",
+                            "columnId": "code",
                             "cellTemplate": {
-                                "id":"editPolicyButton",
-                                "type":"button",
-                                "label": "Edit",
-                                "action": "PRIMARY",
-                                "taskReference": {
-                                    "taskId": "editPolicy",
-                                    "parameterBindings":{
-                                        "policyId":"${policy.id}"
-                                    }
-                                }
+                                "id":"codeCell",
+                                "type":"text",
+                                "value": "${reward.code}"
                             },
-                            "label":"Edit"
+                            "label":"Reward Code"
                         }
+
                     ]
                 }
             ]

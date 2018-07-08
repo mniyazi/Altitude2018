@@ -1,0 +1,74 @@
+{
+    "id": "grantRewards",
+    "endPoints": [
+
+        {
+            "name" : "rewardData",
+            "baseUrlType" : "platform-class",
+            "url" : "rewards",
+            "authType" : "sso"
+
+        },
+        {
+            "name" : "rewardTypeData",
+            "baseUrlType" : "platform-class",
+            "url" : "rewardTypes",
+            "authType" : "sso"
+
+        }
+    ],
+    "outboundData": {
+        "outboundEndPoints": [
+            {
+                "name" : "rewardPost",
+                "baseUrlType" : "function-service",
+                "url" : "520048e7-7fed-4fab-9cbf-4aed990abd88",
+                "authType" : "sso"
+            }
+        ]
+    },
+    "presentation": {
+        "title": {
+            "type": "title",
+            "label": "Grant Rewards"
+        },
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
+        "body": {
+            "id":"grantRewardId",
+            "type": "section",
+            "horizontal": false,
+            "children": [
+                {
+                    "type": "date",
+                    "id": "date",
+                    "label": "Reward Grant Date",
+                    "valueOutBinding": "rewardPost.date",
+                    "required": "true"
+                },
+                {
+                    "type": "dropdown",
+                    "id": "rewardType",
+                    "label": "Reward Type",
+                    "values": "${rewardTypeData.data}",
+                    "idKey": "id",
+                    "displayKey": "rewardName",
+                    "valueOutBinding": "rewardPost.ofType.rewardName",
+                    "required":"true"
+                }
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}

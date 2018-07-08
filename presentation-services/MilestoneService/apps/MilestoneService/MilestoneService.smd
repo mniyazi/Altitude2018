@@ -1,0 +1,82 @@
+{
+  "id" : "MilestoneService",
+  "siteId" : "MilestoneService",
+  "applicationId" : "MilestoneService",
+  "siteAuth" : {
+    "authTypes" : [ {
+      "id" : "sso",
+      "scheme" : "SSO"
+    },
+      {
+        "scheme": "NoAuth",
+        "id": "noAuth",
+        "authenticationScheme": "NOAUTH"
+      } ],
+    "defaultId" : "sso"
+  },
+  "dataProviders" : [
+    {
+      "key": "workday-common",
+      "value": "https://api.workday.com/common/v1/"
+    },
+    {
+      "key": "platform-class",
+      "value": "https://api.workday.com/apps/com.example.workday.MilestoneService/v1/"
+    },
+    {
+      "key": "function-service",
+      "value": "https://api.workday.com/functions/v1alpha/exec/"
+    },
+    {
+      "key": "wql",
+      "value": "https://api.workday.com/wql/v1/"
+    },
+    {
+      "key": "workday-base",
+      "value": "https://api.workday.com/"
+    } ],
+  "tasks" : [
+    {
+      "id": "root",
+      "routingPattern": "/",
+      "page": {
+        "id": "adminLandingPage"
+      }
+    },
+    {
+      "id": "listRewardTypes",
+      "routingPattern": "listRewardTypes",
+      "page": {
+        "id": "listRewardTypes"
+      }
+    },
+    {
+      "id": "addRewardType",
+      "routingPattern": "addRewardType",
+      "page": {
+        "id": "addRewardType"
+      }
+    },
+    {
+      "id": "grantRewards",
+      "routingPattern": "grantRewards",
+      "page": {
+        "id": "grantRewards"
+      }
+    },
+    {
+      "id": "addRewardCondition",
+      "routingPattern": "addRewardCondition",
+      "page": {
+        "id": "addRewardCondition"
+      }
+    },
+    {
+      "id": "listRewards",
+      "routingPattern": "listRewards",
+      "page": {
+        "id": "listRewards"
+      }
+    }
+  ]
+}

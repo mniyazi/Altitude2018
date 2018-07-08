@@ -1,0 +1,84 @@
+{
+    "id" : "listRewardTypes",
+    "endPoints" : [
+        {
+            "name" : "rewardTypeData",
+            "baseUrlType" : "platform-class",
+            "url" : "rewardTypes",
+            "authType" : "sso"
+        }
+    ],
+    "presentation" : {
+        "title": {
+            "type": "title",
+            "label": "Reward Types"
+        },
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
+        "body" : {
+            "id" : "myRewardsBody",
+            "type" : "section",
+            "children" : [
+                {
+                    "id" : "navigationButtons",
+                    "type": "section",
+                    "horizontal": true,
+                    "children": [
+                        {
+                            "id":"addRewardTypeButton",
+                            "type": "button",
+                            "label": "Add Reward Type",
+                            "action": "PRIMARY",
+                            "taskReference": {
+                                "taskId": "addRewardType"
+                            }
+                        },
+                        {
+                            "id":"returnToRewardsButton",
+                            "type": "button",
+                            "label": "Return to Milestones",
+                            "action": "SECONDARY",
+                            "taskReference": {
+                                "taskId": "adminLandingPage"
+                            }
+                        }
+
+                    ]
+
+                },
+                {
+                    "type" : "grid",
+                    "gridType": "LIST",
+                    "id" : "rewardTypes",
+                    "rows": "${rewardTypeData.data}",
+                    "rowVariableName": "rewardType",
+                    "columns": [
+                        {
+                            "type": "column",
+                            "id": "name",
+                            "columnId": "name",
+                            "cellTemplate": {
+                                "id":"nameCell",
+                                "type":"text",
+                                "value": "${rewardType.rewardName}"
+                            },
+                            "label":"Reward Type Name"
+                        }
+
+                    ]
+                }
+            ]
+        },
+        "footer" : {
+            "type" : "footer",
+            "children" : [
+                {
+                    "type" : "richText",
+                    "enabled" : "false",
+                    "value" : "Powered By WCP"
+                } ]
+        }
+    }
+}

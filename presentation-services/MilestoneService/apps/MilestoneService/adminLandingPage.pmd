@@ -1,0 +1,75 @@
+{
+    "id": "adminLandingPage",
+    "endPoints": [
+    ],
+    "presentation": {
+        "title": {
+            "type": "title",
+            "label": "Milestone Rewards Application - Landing Page"
+        },
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
+        "body": {
+            "id": "adminLandingPageBody",
+            "type": "section",
+            "horizontal": true,
+            "children": [
+                {
+                    "id" : "adminTaskSection",
+                    "type":"section",
+                    "children": [
+                        {
+                            "id" : "adminTaskHeader",
+                            "type": "richText",
+                            "value": "<h1>Admin Tasks</h1>"
+                        },
+
+                        {
+                            "id" : "maintainBreedsButton",
+                            "type": "button",
+                            "label": "Maintain Reward Types",
+                            "action": "LINK",
+                            "taskReference": {
+                                "taskId": "listRewardsTypes"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id" : "selfServiceSection",
+                    "type" : "section",
+                    "children": [
+                        {
+                            "id" : "selfServiceTasksHeader",
+                            "type": "richText",
+                            "value": "<h1>Self-Service Tasks </h1>"
+                        },
+                        {
+                            "id" : "grantRewardButton",
+                            "type": "button",
+                            "label": "Grant Reward",
+                            "action": "LINK",
+                            "taskReference": {
+                                "taskId": "grantReward"
+                            }
+                        }
+
+                    ]
+                }
+
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}
