@@ -1,5 +1,5 @@
 {
-    "id": "grantReward",
+    "id": "grantRewards",
     "endPoints": [
 
         {
@@ -16,37 +16,21 @@
             "authType" : "sso"
 
         }
-
     ],
     "outboundData": {
         "outboundEndPoints": [
             {
-                "name": "rewardPost",
-                "baseUrlType": "platform-class",
-                "url":"rewards",
+                "name" : "rewardPost",
+                "baseUrlType" : "function-service",
+                "url" : "520048e7-7fed-4fab-9cbf-4aed990abd88",
                 "authType" : "sso"
-            },
-            {
-                "name": "transitionOutboundVars",
-                "type": "outboundVariable",
-                "variableScope": "flow",
-                "values": [
-                    {
-                        "outboundPath": "rewardId",
-                        "value": "${rewardPost.id}"
-                    },
-                    {
-                        "outboundPath":"rewardTypeId",
-                        "value":"${rewardPost.ofType.rewardName}"
-                    }
-                ]
             }
         ]
     },
     "presentation": {
         "title": {
             "type": "title",
-            "label": "Grant Reward"
+            "label": "Grant Rewards"
         },
         "header":{
             "type":"header",
@@ -58,6 +42,13 @@
             "horizontal": false,
             "children": [
                 {
+                    "type": "date",
+                    "id": "date",
+                    "label": "Reward Grant Date",
+                    "valueOutBinding": "rewardPost.date",
+                    "required": "true"
+                },
+                {
                     "type": "dropdown",
                     "id": "rewardType",
                     "label": "Reward Type",
@@ -66,29 +57,7 @@
                     "displayKey": "rewardName",
                     "valueOutBinding": "rewardPost.ofType.rewardName",
                     "required":"true"
-                },
-                {
-                    "type": "text",
-                    "id": "id",
-                    "label": "Reward ID",
-                    "valueOutBinding": "rewardPost.id",
-                    "required": "true"
-                },
-                {
-                    "type": "date",
-                    "id": "date",
-                    "label": "Reward Grant Date",
-                    "valueOutBinding": "rewardPost.date",
-                    "required": "true"
-                },
-                {
-                    "type": "text",
-                    "id": "code",
-                    "label": "Reward Code",
-                    "valueOutBinding": "rewardPost.code",
-                    "required": "true"
                 }
-
             ]
         },
         "footer": {

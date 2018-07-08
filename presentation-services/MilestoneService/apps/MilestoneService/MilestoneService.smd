@@ -58,10 +58,10 @@
       }
     },
     {
-      "id": "grantReward",
-      "routingPattern": "grantReward",
+      "id": "grantRewards",
+      "routingPattern": "grantRewards",
       "page": {
-        "id": "grantReward"
+        "id": "grantRewards"
       }
     },
     {
@@ -77,45 +77,6 @@
       "page": {
         "id": "listRewards"
       }
-    }
-  ],
-  "flowDefinitions": [
-    {
-      "id": "flowId",
-      "name": "grantReward",
-      "flowSteps": [
-        {
-          "descriptor": "Select Reward Type",
-          "id": "flowStepRewardType",
-          "taskId": "grantReward",
-          "transitions": [
-            {
-              "condition": "true",
-              "descriptor": "transition to add reward condition",
-              "order": "a",
-              "value": "flowStepAddRewardCondition"
-            }
-          ]
-        },
-        {
-          "descriptor": "add reward condition",
-          "id": "flowStepAddRewardCondition",
-          "taskId": "addRewardCondition",
-          "transitions": [
-            {
-              "condition": "true",
-              "descriptor": "transition to rewards",
-              "order": "a",
-              "value": "listRewards"
-            }
-          ]
-        },
-        {
-          "descriptor": "listRewards",
-          "id": "listRewards",
-          "taskId": "listRewards"
-        }
-      ]
     }
   ]
 }
