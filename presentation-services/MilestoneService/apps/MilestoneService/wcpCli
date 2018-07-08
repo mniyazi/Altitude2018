@@ -1,0 +1,33 @@
+# Here's your WCP CLI scratchpad!
+
+# Use this scratchpad to run WQL queries via CLI commands while you're coding your PMD endpoints.
+# This scratchpad runs your CLI command as you're entering them, and shows these helpful output on the right:
+#   - The WQL query.
+#   - The PMD expression with the WQL query. You can copy this to your clipboard and paste it into your PMD code.
+#   - The query output.
+#
+# As a start, use the example CLI commands to get the data source and fields you need in your WQL query.
+#   - To get the data source to query from, uncomment the datasource command.
+#        After this command executes, copy the id and alias of the data source you want to query.
+#   - To get the fields to select, uncomment the fields command. Insert the id of the data source you want to query.
+#        After this command executes, copy the alias of the fields you want to select.
+#   - To run the query, uncomment the data command. Replace the fields and data source alias.
+#        After this command executes, you can copy the PMD output to your clipboard and paste it in your PMD code.
+
+#  Examples:
+
+#   Show all data sources
+# dataSources
+
+#  Show fields in Course_Subjects - 11e0a81730fa10001163b640941b2663
+# fields 11e0a81730fa10001163b640941b2663
+
+#  Query specific fields within Course_Subjects
+# data SELECT Name, Inactive, Abbreviation, Course_Subject FROM Course_Subjects
+#  WHERE Abbreviation = 'BIOL'
+#  LIMIT 50
+
+#  Variable Example:
+#   - PMD expressions can be entered as shown below. The query will be run as written
+#   - The PMD expression will replace everything on the right side of the line with the expression on the left
+# ${myAbbreviation.expression} = 'BIOL'

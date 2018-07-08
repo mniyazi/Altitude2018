@@ -1,0 +1,61 @@
+{
+    "id": "addRewardCondition",
+    "endPoints": [
+        {
+            "name": "rewardConditionData",
+            "baseUrlType": "platform-class",
+            "url":"rewardConditions",
+            "authType" : "sso"
+        }
+    ],
+    "outboundData": {
+        "outboundEndPoints": [
+            {
+                "name": "rewardConditionPost",
+                "baseUrlType": "platform-class",
+                "url":"rewardConditions",
+                "authType" : "sso"
+            }
+        ]
+    },
+    "presentation": {
+        "title": {
+            "type": "title",
+            "label": "Add Reward Condition"
+        },
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
+        "body": {
+            "type": "section",
+            "horizontal": false,
+            "children": [
+                {
+                    "type": "text",
+                    "id": "rewardCondition",
+                    "label": "Reward Condition",
+                    "valueOutBinding": "rewardConditionPost.name",
+                    "required": "true"
+                },
+                {
+                    "type": "date",
+                    "id": "tenure",
+                    "label": "Tenure",
+                    "valueOutBinding": "rewardConditionPost.tenure",
+                    "required": "true"
+                }
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}

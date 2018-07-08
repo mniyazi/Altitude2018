@@ -1,20 +1,19 @@
 {
-    "id": "deleteBreed",
+    "id": "addRewardType",
     "endPoints": [
         {
-            "name" : "breedData",
-            "baseUrlType" : "platform-class",
-            "url" : "breeds/${queryParams.breedId}",
+            "name": "rewardTypeData",
+            "baseUrlType": "platform-class",
+            "url":"rewardTypes",
             "authType" : "sso"
         }
     ],
     "outboundData": {
         "outboundEndPoints": [
             {
-                "name": "breedDelete",
+                "name": "rewardTypePost",
                 "baseUrlType": "platform-class",
-                "url":"breeds/${breedData.id}",
-                "httpMethod": "DELETE",
+                "url":"rewardTypes",
                 "authType" : "sso"
             }
         ]
@@ -22,27 +21,22 @@
     "presentation": {
         "title": {
             "type": "title",
-            "label": "Delete Breed"
+            "label": "Add Reward Type"
         },
-        "headerSize": "VPS_DEFAULT",
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
         "body": {
-            "id":"deleteBreedBody",
             "type": "section",
             "horizontal": false,
             "children": [
                 {
                     "type": "text",
-                    "id": "name",
-                    "label": "Breed Name",
-                    "value": "${breedData.breedName}",
-                    "enabled": "false"
-                },
-                {
-                    "type": "checkBox",
-                    "id": "inUse",
-                    "label": "In Use",
-                    "value": "${breedData.inUse}",
-                    "enabled": "false"
+                    "id": "rewardType",
+                    "label": "Reward Type",
+                    "valueOutBinding": "rewardTypePost.name",
+                    "required": "true"
                 }
             ]
         },

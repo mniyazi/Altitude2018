@@ -1,0 +1,91 @@
+{
+    "id": "grantReward",
+    "endPoints": [
+
+        {
+            "name" : "rewardData",
+            "baseUrlType" : "platform-class",
+            "url" : "rewards",
+            "authType" : "sso"
+
+        },
+        {
+            "name" : "rewardTypeData",
+            "baseUrlType" : "platform-class",
+            "url" : "rewardTypes",
+            "authType" : "sso"
+
+        }
+
+    ],
+    "outboundData": {
+        "outboundEndPoints": [
+            {
+                "name": "rewardPost",
+                "baseUrlType": "platform-class",
+                "url":"rewards",
+                "authType" : "sso"
+            },
+            {
+                "name": "transitionOutboundVars",
+                "type": "outboundVariable",
+                "variableScope": "flow",
+                "values": [
+                    {
+                        "outboundPath": "rewardId",
+                        "value": "${rewardPost.id}"
+                    },
+                    {
+                        "outboundPath":"rewardTypeId",
+                        "value":"${rewardPost.ofType.id}"
+                    }
+                ]
+            }
+        ]
+    },
+    "presentation": {
+        "title": {
+            "type": "title",
+            "label": "Grant Reward"
+        },
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
+        "body": {
+            "id":"grantRewardId",
+            "type": "section",
+            "horizontal": false,
+            "children": [
+                {
+                    "type": "dropdown",
+                    "id": "rewardType",
+                    "label": "Reward Type",
+                    "values": "${rewardTypeData.data}",
+                    "idKey": "id",
+                    "displayKey": "name",
+                    "valueOutBinding": "rewardPost.ofType.id",
+                    "required":"true"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Reward Name",
+                    "valueOutBinding": "rewardPost.name",
+                    "required": "true"
+                }
+
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}
