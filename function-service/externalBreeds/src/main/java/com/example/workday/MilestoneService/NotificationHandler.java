@@ -111,7 +111,8 @@ public class NotificationHandler implements RequestHandler {
         StringBuilder builder = new StringBuilder();
         builder.append("Hi ").append(worker.getDescriptor()).append(",").append("<BR/>").append("<BR/>");
         builder.append("Happy anniversary! Thank you for the all of the contributions you have made in making our company successful.").append("<BR/>");
-        builder.append("Here please find your reward discount code:"+reward.getCode()).append("<BR/>").append("<BR/>");
+        builder.append("Here please find your reward ").append(reward.getOfType().getDescriptor().toLowerCase()).append(":")
+                .append(reward.getCode()).append("<BR/>").append("<BR/>");
         builder.append("Regards,").append("<BR/>");
         builder.append("Workday Employee Reward Program");
 
