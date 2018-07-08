@@ -1,0 +1,143 @@
+{
+    "id" : "viewBreeds",
+    "endPoints" : [
+        {
+            "name" : "breedData",
+            "baseUrlType" : "platform-class",
+            "url" : "breeds",
+            "authType" : "sso"
+
+        }
+    ],
+
+    "presentation" : {
+        "title": {
+            "type": "title",
+            "label": "Maintain Breeds"
+        },
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
+        "body" : {
+            "id": "viewBreedsBody",
+            "type" : "section",
+            "children" : [
+                {
+                    "id":"buttonGrouping",
+                    "type": "section",
+                    "horizontal": true,
+                    "children": [
+                        {
+                            "id" : "addBreedButton",
+                            "type": "button",
+                            "label": "Add Breed",
+                            "action": "PRIMARY",
+                            "taskReference": {
+                                "taskId": "submitBreed"
+                            }
+                        },
+                        {
+                            "id" : "returnToWorkdogButton",
+                            "type": "button",
+                            "label": "Return to Workdog",
+                            "action": "SECONDARY",
+                            "taskReference": {
+                                "taskId": "adminLandingPage"
+                            }
+                        }
+
+                    ]
+
+                },
+                {
+                    "type" : "grid",
+                    "gridType": "LIST",
+                    "id" : "breeds",
+                    "rows": "${breedData.data}",
+                    "rowVariableName": "breed",
+                    "columns": [
+                        {
+                            "type": "column",
+                            "id": "breedName",
+                            "columnId": "breedName",
+                            "cellTemplate": {
+                                "id":"breedNameCell",
+                                "type":"text",
+                                "value": "${breed.breedName}"
+                            },
+                            "label":"Breed Name"
+                        },
+                        {
+                            "type": "column",
+                            "id": "breedImage",
+                            "columnId": "imageCol",
+                            "cellTemplate": {
+                                "id":"imageCell",
+                                "type":"image",
+                                "imageUri": "${breed.imageUri}"
+                            },
+                            "label":"Breed Image"
+                        },
+                        {
+                            "type": "column",
+                            "id": "editButton",
+                            "columnId": "editButtonColumn",
+                            "cellTemplate": {
+                                "id":"editbuttonCell",
+                                "type":"button",
+                                "label": "Edit",
+                                "action": "PRIMARY",
+                                "taskReference": {
+                                    "taskId": "editBreed",
+                                    "parameterBindings":{
+                                        "breedId":"${breed.id}"
+                                    }
+                                }
+                            },
+                            "label":"Edit Breed"
+                        },
+                        {
+                            "type": "column",
+                            "id": "inUse",
+                            "columnId": "inUseColumn",
+                            "cellTemplate": {
+                                "id":"inUseCell",
+                                "type":"text",
+                                "value":"${breed.inUse ? 'True':'False'}"
+                            },
+                            "label":"In Use"
+                        },
+                        {
+                            "type": "column",
+                            "id": "deleteButton",
+                            "columnId": "deleteButtonColumn",
+                            "cellTemplate": {
+                                "id":"deleteButtonCell",
+                                "type":"button",
+                                "label": "Delete",
+                                "action": "PRIMARY",
+                                "taskReference": {
+                                    "taskId": "deleteBreed",
+                                    "parameterBindings":{
+                                        "breedId":"${breed.id}"
+                                    }
+                                },
+                                "render":"${not breed.inUse}"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "footer" : {
+            "type" : "footer",
+            "children" : [
+                {
+                    "type" : "richText",
+                    "enabled" : "false",
+                    "value" : "Powered By WCP"
+                } ]
+        }
+    }
+}

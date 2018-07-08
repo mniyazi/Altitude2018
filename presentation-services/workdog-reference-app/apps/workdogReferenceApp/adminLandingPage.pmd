@@ -1,0 +1,128 @@
+{
+    "id": "adminLandingPage",
+    "endPoints": [
+    ],
+    "presentation": {
+        "title": {
+            "type": "title",
+            "label": "Workdog Reference Application - Landing Page"
+        },
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
+        "body": {
+            "id": "adminLandingPageBody",
+            "type": "section",
+            "horizontal": true,
+            "children": [
+                {
+                    "id" : "adminTaskSection",
+                    "type":"section",
+                    "children": [
+                        {
+                            "id" : "adminTaskHeader",
+                            "type": "richText",
+                            "value": "<h1>Admin Tasks</h1>"
+                        },
+
+                        {
+                            "id" : "maintainBreedsButton",
+                            "type": "button",
+                            "label": "Maintain Breeds",
+                            "action": "LINK",
+                            "taskReference": {
+                                "taskId": "viewBreeds"
+                            }
+                        },
+                        {
+                            "id" : "maintainLocationPoliciesButton",
+                            "type": "button",
+                            "label": "Maintain Location Policies",
+                            "action": "LINK",
+                            "taskReference": {
+                                "taskId": "viewLocationPolicies"
+                            }
+                        },
+                        {
+                            "id" : "customReportsHeader",
+                            "type": "richText",
+                            "value": "<h1>Custom Reports</h1>"
+                        },
+                        {
+                            "id" : "workdogEnrollmentReportButton",
+                            "type": "button",
+                            "label": "Workdog Enrollment",
+                            "action": "LINK",
+                            "taskReference": {
+                                "type":"xoTaskReference",
+                                "taskId": "1422$2638"
+                            }
+                        },
+                        {
+                            "id" : "workdogVisitsReportButton",
+                            "type": "button",
+                            "label": "Workdog Visits",
+                            "action": "LINK",
+                            "taskReference": {
+                                "type":"xoTaskReference",
+                                "taskId": "1422$2639"
+                            }
+                        }
+
+                    ]
+                },
+                {
+                    "id" : "selfServiceSection",
+                    "type" : "section",
+                    "children": [
+                        {
+                            "id" : "selfServiceTasksHeader",
+                            "type": "richText",
+                            "value": "<h1>Self-Service Tasks </h1>"
+                        },
+                        {
+                            "id" : "registerWorkdogButton",
+                            "type": "button",
+                            "label": "Register Workdog",
+                            "action": "LINK",
+                            "taskReference": {
+                                "taskId": "registerWorkdog"
+                            }
+                        },
+                        {
+                            "id" : "scheduleVisitButton",
+                            "type": "button",
+                            "label": "Schedule Visit",
+                            "action": "LINK",
+                            "taskReference": {
+                                "taskId": "scheduleVisit"
+                            }
+                        },
+                        {
+                            "id" : "myWorkdogsButton",
+                            "type": "button",
+                            "label": "My Workdogs",
+                            "action": "LINK",
+                            "taskReference": {
+                                "taskId": "myDogs"
+                            }
+                        }
+
+                    ]
+                }
+
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}

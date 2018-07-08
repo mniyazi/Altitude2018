@@ -1,0 +1,60 @@
+{
+    "id": "deleteBreed",
+    "endPoints": [
+        {
+            "name" : "breedData",
+            "baseUrlType" : "platform-class",
+            "url" : "breeds/${queryParams.breedId}",
+            "authType" : "sso"
+        }
+    ],
+    "outboundData": {
+        "outboundEndPoints": [
+            {
+                "name": "breedDelete",
+                "baseUrlType": "platform-class",
+                "url":"breeds/${breedData.id}",
+                "httpMethod": "DELETE",
+                "authType" : "sso"
+            }
+        ]
+    },
+    "presentation": {
+        "title": {
+            "type": "title",
+            "label": "Delete Breed"
+        },
+        "headerSize": "VPS_DEFAULT",
+        "body": {
+            "id":"deleteBreedBody",
+            "type": "section",
+            "horizontal": false,
+            "children": [
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Breed Name",
+                    "value": "${breedData.breedName}",
+                    "enabled": "false"
+                },
+                {
+                    "type": "checkBox",
+                    "id": "inUse",
+                    "label": "In Use",
+                    "value": "${breedData.inUse}",
+                    "enabled": "false"
+                }
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}

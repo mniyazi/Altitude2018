@@ -1,0 +1,123 @@
+{
+    "id": "visitHistory",
+    "endPoints": [
+        {
+            "name" : "visitData",
+            "baseUrlType" : "platform-class",
+            "url" : "visits?forWorkdog=${queryParams.dogId}",
+            "authType" : "sso"
+        },
+        {
+            "name" : "dogData",
+            "baseUrlType" : "platform-class",
+            "url" : "workdogs/${queryParams.dogId}",
+            "authType" : "sso"
+        }
+    ],
+    "presentation": {
+        "headerSize": "VPS_DEFAULT",
+        "title": {
+            "type": "title",
+            "label": "Visit History: ${dogData.name}"
+        },
+        "body": {
+            "id":"visitHistoryBody",
+            "type": "section",
+            "horizontal": false,
+            "children": [
+                {
+                    "id": "visitHistoryBodyChildren",
+                    "type": "section",
+                    "horizontal": true,
+                    "children": [
+                        {
+                            "id" : "scheduleVisitButton",
+                            "type": "button",
+                            "label": "Schedule Visit",
+                            "action": "PRIMARY",
+                            "taskReference": {
+                                "taskId": "scheduleVisit"
+                            }
+                        },
+                        {
+                            "id" : "returnToWorkdogButton",
+                            "type": "button",
+                            "label": "Return to Workdog",
+                            "action": "SECONDARY",
+                            "taskReference": {
+                                "taskId": "adminLandingPage"
+                            }
+                        }
+
+                    ]
+
+                },
+                {
+                    "type" : "grid",
+                    "gridType": "LIST",
+                    "id" : "visits",
+                    "rows": "${visitData.data}",
+                    "rowVariableName": "visit",
+                    "columns": [
+                        {
+                            "type": "column",
+                            "id": "visitDate",
+                            "columnId": "visitDateColumn",
+                            "cellTemplate": {
+                                "id":"dateCell",
+                                "type":"date",
+                                "value": "${visit.visitDate}"
+                            },
+                            "label":"Visit Date"
+                        },
+                        {
+                            "type": "column",
+                            "id": "dogName",
+                            "columnId": "dogNameColumn",
+                            "cellTemplate": {
+                                "id":"nameCell",
+                                "type":"text",
+                                "value": "${visit.forWorkdog.descriptor}"
+                            },
+                            "label":"Dog Name"
+                        },
+                        {
+                            "type": "column",
+                            "id": "locationName",
+                            "columnId": "locationNameColumn",
+                            "cellTemplate": {
+                                "id":"locationCell",
+                                "type":"text",
+                                "value": "${visit.atLocation.descriptor}"
+                            },
+                            "label":"Location"
+                        },
+                        {
+                            "type": "column",
+                            "id": "owner",
+                            "columnId": "ownerColumn",
+                            "cellTemplate": {
+                                "id":"ownerCell",
+                                "type":"text",
+                                "value": "${dogData.ownedByWorker.descriptor}"
+                            },
+                            "label":"Owner"
+                        }
+
+                    ]
+                }
+
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}

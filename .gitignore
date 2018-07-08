@@ -1,0 +1,31 @@
+# Compiled class file
+*.class
+.DS_store
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+#*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+function-service/externalBreeds/build/tmp/jar/MANIFEST.MF
+
+
+.gradle
+
+function-service/externalBreeds/build
+function-service/externalBreeds/.idea
+.idea

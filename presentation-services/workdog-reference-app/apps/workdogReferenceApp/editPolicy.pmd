@@ -1,0 +1,79 @@
+{
+    "id": "editPolicy",
+    "endPoints": [
+        {
+            "name" : "policyData",
+            "baseUrlType" : "platform-class",
+            "url" : "locationPolicys/${routeParams.policyId}",
+            "authType" : "sso"
+        }
+    ],
+    "outboundData": {
+        "outboundEndPoints": [
+            {
+                "name": "policyPut",
+                "baseUrlType": "platform-class",
+                "url":"locationPolicys/${policyData.id}",
+                "httpMethod": "PUT",
+                "authType" : "sso"
+            }
+        ]
+    },
+    "presentation" : {
+        "headerSize" : "STANDARD",
+        "enableFullScreen" : "${false}",
+        "dirtyPage" : "${false}",
+        "title" : {
+            "type" : "title",
+            "label" : "Edit Location Policy: ${policyData.forLocation.descriptor}"
+        },
+        "body" : {
+            "id":"editPolicyBody",
+            "children" : [
+                {
+                    "id":"locationName",
+                    "label" : "Location",
+                    "value" : "${policyData.forLocation.descriptor}",
+                    "type" : "text",
+                    "enabled": "false"
+                },
+                {
+                    "type": "checkBox",
+                    "id": "allowsDogs",
+                    "label": "Location Allows Dogs",
+                    "value":"${policyData.allowsDogs}",
+                    "valueOutBinding": "policyPut.allowsDogs"
+                },
+                {
+                    "type": "number",
+                    "id": "maxDogs",
+                    "label": "Max Dogs",
+                    "value":"${policyData.maxDogs}",
+                    "valueOutBinding": "policyPut.maxDogs",
+                    "required": "true",
+                    "minimumValue": "1"
+                },
+                {
+                    "id":"locationId",
+                    "label" : "Location",
+                    "value" : "${policyData.forLocation.id}",
+                    "type" : "text",
+                    "valueOutBinding": "policyPut.forLocation.id",
+                    "enabled": "false"
+                }
+
+            ],
+            "type" : "section"
+        },
+        "footer": {
+            "type" : "footer",
+            "children" : [ {
+                               "type" : "richText",
+                               "value" : "Powered By Workday Cloud Platform",
+                               "enabled" : "false"
+                           } ]
+        }
+
+    }
+
+}

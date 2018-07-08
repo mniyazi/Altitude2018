@@ -1,0 +1,90 @@
+{
+    "id" : "createPolicy",
+    "dirtyPage" : "${false}",
+    "confirmPageMode" : false,
+
+  "pageId" : "createPolicy",
+  "endPoints" :[
+      {
+        "baseUrlType" : "wql",
+        "name" : "locations",
+        "url" : "data?query=${string:urlEncode('SELECT Location, locationName, workdayID FROM Locations_used_as_Business_Site')}",
+        "authType" : "sso"
+    },
+      {
+          "name": "policyData",
+          "baseUrlType": "platform-class",
+          "url":"locationPolicys",
+          "authType" : "sso"
+      }
+
+  ],
+    "outboundData": {
+        "outboundEndPoints": [
+            {
+                "name": "policyPost",
+                "baseUrlType": "platform-class",
+                "url":"locationPolicys",
+                "authType" : "sso"
+            }
+        ]
+    },
+
+  "presentation" : {
+      "headerSize" : "STANDARD",
+      "enableFullScreen" : "${false}",
+      "dirtyPage" : "${false}",
+    "title" : {
+      "type" : "title",
+      "label" : "Create Location Policy"
+    },
+    "body" : {
+        "id": "createPolicyBody",
+        "children" : [
+          {
+            "id":"locationSelect",
+            "multiSelect" : "false",
+            "label" : "Location",
+            "displayKey" : "locationName",
+            "idKey" : "workdayID",
+            "values" : "${locations.data}",
+            "type" : "instanceList",
+            "valueOutBinding": "policyPost.forLocation.id",
+            "required" : "true",
+            "validations": [
+                {
+                    "expression": "${not (list:size(list:filter(list:mapAttribute(policyData.data,'forLocation'),'id',string:formatListToString('',locationSelect.value)))>0)}",
+
+                    "errorMessage": "Policy already exists for Location."
+                }
+            ]
+          },
+          {
+              "type": "checkBox",
+              "id": "allowsDogs",
+              "label": "Location Allows Dogs",
+              "valueOutBinding": "policyPost.allowsDogs"
+          },
+          {
+              "type": "number",
+              "id": "maxdogs",
+              "label": "Max Dogs Per Day",
+              "valueOutBinding": "policyPost.maxDogs",
+              "required": "true",
+              "minimumValue": "1"
+          }
+      ],
+      "type" : "section"
+    },
+      "footer": {
+        "type" : "footer",
+        "children" : [ {
+            "type" : "richText",
+            "value" : "Powered By Workday Cloud Platform",
+            "enabled" : "false"
+         } ]
+    }
+
+  }
+
+}

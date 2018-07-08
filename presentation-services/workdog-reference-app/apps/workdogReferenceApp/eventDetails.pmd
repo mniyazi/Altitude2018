@@ -1,0 +1,71 @@
+{
+    "id": "eventDetails",
+    "endPoints": [
+        {
+            "name": "customBpEvent",
+            "baseUrlType": "workday-base",
+            "url":"customBusinessProcess/v1/events/${routeParams.eventId}",
+            "authType" : "sso"
+        },
+        {
+            "name" : "dogData",
+            "baseUrlType" : "platform-class",
+            "url" : "workdogs/${customBpEvent.externalDataID}",
+            "authType" : "sso"
+        }
+    ],
+    "presentation": {
+        "headerSize": "VPS_DEFAULT",
+        "title" : {
+            "type" : "title",
+            "label" : "Workdog Details"
+        },
+        "body": {
+            "id":"eventDetailsBody",
+            "type": "section",
+            "horizontal": false,
+            "children": [
+                {
+                    "type": "text",
+                    "id": "dogName",
+                    "label": "Name",
+                    "value": "${dogData.name}"
+                },
+                {
+                    "type": "text",
+                    "id": "dogOwner",
+                    "label": "Owner",
+                    "value": "${dogData.ownedByWorker.descriptor}"
+                },
+                {
+                    "type": "text",
+                    "id": "dogBreed",
+                    "label": "Breed",
+                    "value": "${dogData.ofBreed.descriptor}"
+                },
+                {
+                    "type": "date",
+                    "id": "hello",
+                    "label": "Date of Birth",
+                    "value": "${dogData.dateOfBirth}"
+                },
+                {
+                    "type": "text",
+                    "id": "weight",
+                    "label": "Weight",
+                    "value": "${dogData.weight}"
+                }
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}

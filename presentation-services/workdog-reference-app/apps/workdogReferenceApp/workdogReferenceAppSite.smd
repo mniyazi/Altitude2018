@@ -1,0 +1,339 @@
+{
+  "id": "workdogReferenceAppSite",
+  "siteId": "workdogReferenceAppSite",
+  "applicationId": "workdogReferenceApp",
+  "siteAuth": {
+    "authTypes": [
+      {
+        "id": "sso",
+        "authenticationScheme": "SSO",
+        "scheme": "SSO"
+      },
+      {
+        "scheme": "NoAuth",
+        "id": "noAuth",
+        "authenticationScheme": "NOAUTH"
+      }
+    ],
+    "defaultId": "sso"
+  },
+  "dataProviders": [
+    {
+      "key": "workday-common",
+      "value": "https://api.workday.com/common/v1/"
+    },
+    {
+      "key": "platform-class",
+      "value": "https://api.workday.com/apps/com.workday.workdog.main/v1/"
+    },
+    {
+      "key": "function-service",
+      "value": "https://api.workday.com/functions/v1alpha/exec/"
+    },
+    {
+      "key": "wql",
+      "value": "https://api.workday.com/wql/v1/"
+    },
+    {
+      "key": "workday-base",
+      "value": "https://api.workday.com/"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "root",
+      "routingPattern": "/",
+      "page": {
+        "id": "adminLandingPage"
+      }
+    },
+    {
+      "id": "viewBreeds",
+      "routingPattern": "viewBreeds",
+      "page": {
+        "id": "viewBreeds"
+      }
+    },
+    {
+      "id": "submitBreed",
+      "routingPattern": "submitBreed",
+      "page": {
+        "id": "submitBreed"
+      }
+    },
+    {
+      "id": "registerWorkdog",
+      "routingPattern": "registerWorkdog",
+      "page": {
+        "id": "registerWorkdog"
+      }
+    },
+    {
+      "id": "reviewRegistration",
+      "routingPattern": "reviewRegistration",
+      "page": {
+        "id": "reviewRegistration"
+      }
+    },
+    {
+      "id": "viewLocationPolicies",
+      "routingPattern": "viewLocationPolicies",
+      "page": {
+        "id": "viewLocationPolicies"
+      }
+    },
+    {
+      "id": "scheduleVisit",
+      "routingPattern": "scheduleVisit",
+      "page": {
+        "id": "scheduleVisit"
+      }
+    },
+    {
+      "id": "createPolicy",
+      "routingPattern": "createPolicy",
+      "page": {
+        "id": "createPolicy"
+      }
+    },
+    {
+      "id": "adminLandingPage",
+      "routingPattern": "adminLandingPage",
+      "page": {
+        "id": "adminLandingPage"
+      }
+    },
+    {
+      "id": "editBreed",
+      "routingPattern": "/editBreed/{breedId}",
+      "page": {
+        "id": "editBreed"
+      }
+    },
+    {
+      "id": "editPolicy",
+      "routingPattern": "/editPolicy/{policyId}",
+      "page": {
+        "id": "editPolicy"
+      }
+    },
+    {
+      "id": "deleteBreed",
+      "routingPattern": "deleteBreed",
+      "page": {
+        "id": "deleteBreed"
+      }
+    },
+    {
+      "id": "myDogs",
+      "routingPattern": "myDogs",
+      "page": {
+        "id": "myDogs"
+      }
+    },
+    {
+      "id": "visitHistory",
+      "routingPattern": "visitHistory",
+      "page": {
+        "id": "visitHistory"
+      }
+    },
+    {
+      "id": "selectDateForVisit",
+      "routingPattern": "selectDateForVisit",
+      "page": {
+        "id": "selectDateForVisit"
+      }
+    },
+    {
+      "id": "eventDetails",
+      "routingPattern": "/eventDetails/{eventId}",
+      "page": {
+        "id": "eventDetails"
+      }
+    }
+  ],
+  "flowDefinitions": [
+    {
+      "id": "flowId",
+      "name": "registerWorkdogFlow",
+      "flowSteps": [
+        {
+          "descriptor": "Enter in dog credentials",
+          "id": "flowStep1",
+          "taskId": "registerWorkdog",
+          "transitions": [
+            {
+              "condition": "true",
+              "descriptor": "transition to step 2",
+              "order": "a",
+              "value": "flowStep2"
+            }
+          ]
+        },
+        {
+          "descriptor": "final step of the flow",
+          "id": "flowStep2",
+          "taskId": "reviewRegistration"
+        }
+      ]
+    },
+    {
+      "id": "flowId2",
+      "name": "locationPolicyFlow",
+      "flowSteps": [
+        {
+          "descriptor": "Enter in location policy",
+          "id": "flowStepA",
+          "taskId": "createPolicy",
+          "transitions": [
+            {
+              "condition": "true",
+              "descriptor": "transition to step B",
+              "order": "a",
+              "value": "flowStepB"
+            }
+          ]
+        },
+        {
+          "descriptor": "final step of the flow",
+          "id": "flowStepB",
+          "taskId": "viewLocationPolicies"
+        }
+      ]
+    },
+    {
+      "id": "flowId2a",
+      "name": "editLocationPolicyFlow",
+      "flowSteps": [
+        {
+          "descriptor": "Edit location policy",
+          "id": "flowStepEditPolicy",
+          "taskId": "editPolicy",
+          "transitions": [
+            {
+              "condition": "true",
+              "descriptor": "transition to view Policies",
+              "order": "a",
+              "value": "flowStepViewPolicies"
+            }
+          ]
+        },
+        {
+          "descriptor": "final step of the flow",
+          "id": "flowStepViewPolicies",
+          "taskId": "viewLocationPolicies"
+        }
+      ]
+    },
+    {
+      "id": "flowId3",
+      "name": "submitBreed",
+      "flowSteps": [
+        {
+          "descriptor": "Enter in a breed",
+          "id": "flowStepSubmitBreed",
+          "taskId": "submitBreed",
+          "transitions": [
+            {
+              "condition": "true",
+              "descriptor": "transition back to viewBreeds",
+              "order": "a",
+              "value": "flowStepViewBreeds"
+            }
+          ]
+        },
+        {
+          "descriptor": "return to breeds",
+          "id": "flowStepViewBreeds",
+          "taskId": "viewBreeds"
+        }
+      ]
+    },
+    {
+      "id": "flowId4",
+      "name": "editBreed",
+      "flowSteps": [
+        {
+          "descriptor": "Edit a breed",
+          "id": "flowStepEditBreed",
+          "taskId": "editBreed",
+          "transitions": [
+            {
+              "condition": "true",
+              "descriptor": "transition back to viewBreeds",
+              "order": "a",
+              "value": "flowStepViewBreeds2"
+            }
+          ]
+        },
+        {
+          "descriptor": "return to policies",
+          "id": "flowStepViewBreeds2",
+          "taskId": "viewBreeds"
+        }
+      ]
+    },
+    {
+      "id": "flowId5",
+      "name": "deleteBreed",
+      "flowSteps": [
+        {
+          "descriptor": "Delete A Breed",
+          "id": "flowStepDeleteBreed",
+          "taskId": "deleteBreed",
+          "transitions": [
+            {
+              "condition": "true",
+              "descriptor": "transition back to viewBreeds",
+              "order": "a",
+              "value": "flowStepViewBreeds3"
+            }
+          ]
+        },
+        {
+          "descriptor": "return to breeds",
+          "id": "flowStepViewBreeds3",
+          "taskId": "viewBreeds"
+        }
+      ]
+    },
+    {
+      "id": "flowId6",
+      "name": "scheduleVisit",
+      "flowSteps": [
+        {
+          "descriptor": "Select Dog and Location",
+          "id": "flowStepDogAndLocation",
+          "taskId": "scheduleVisit",
+          "transitions": [
+            {
+              "condition": "true",
+              "descriptor": "transition to date select",
+              "order": "a",
+              "value": "flowStepSelectDate"
+            }
+          ]
+        },
+        {
+          "descriptor": "select date",
+          "id": "flowStepSelectDate",
+          "taskId": "selectDateForVisit",
+          "transitions": [
+            {
+              "condition": "true",
+              "descriptor": "transition to visit history",
+              "order": "a",
+              "value": "viewVisitHistory"
+            }
+          ]
+        },
+        {
+          "descriptor": "viewVisitHistory",
+          "id": "viewVisitHistory",
+          "taskId": "visitHistory"
+        }
+      ]
+    }
+  ]
+}

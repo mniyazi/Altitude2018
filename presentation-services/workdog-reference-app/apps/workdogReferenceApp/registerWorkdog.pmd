@@ -1,0 +1,127 @@
+{
+    "id": "registerWorkdog",
+    "endPoints": [
+
+        {
+            "name" : "breedData",
+            "baseUrlType" : "platform-class",
+            "url" : "breeds",
+            "authType" : "sso"
+
+        },
+        {
+            "name" : "myData",
+            "baseUrlType" : "workday-common",
+            "url" : "workers/me",
+            "authType" : "sso"
+        }
+
+    ],
+    "outboundData": {
+        "outboundEndPoints": [
+            {
+                "name": "dogPost",
+                "baseUrlType": "platform-class",
+                "url":"workdogs",
+                "authType" : "sso"
+            },
+            {
+                "name": "transitionOutboundVars",
+                "type": "outboundVariable",
+                "variableScope": "flow",
+                "values": [
+                    {
+                        "outboundPath": "dogId",
+                        "value": "${dogPost.id}"
+                    },
+                    {
+                        "outboundPath":"breedId",
+                        "value":"${dogPost.ofBreed.id}"
+                    }
+                ]
+            }
+        ]
+    },
+    "presentation": {
+        "title": {
+            "type": "title",
+            "label": "Register Workdog"
+        },
+        "header":{
+            "type":"header",
+            "headerSize":"STANDARD"
+        },
+        "body": {
+            "id":"registerWorkdogId",
+            "type": "section",
+            "horizontal": false,
+            "children": [
+                {
+                    "type": "text",
+                    "id": "owner",
+                    "label": "Workdog Owner",
+                    "value": "${myData.descriptor}",
+                    "enabled":"false"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Workdog Name",
+                    "valueOutBinding": "dogPost.name",
+                    "required": "true"
+                },
+                {
+                    "type": "dropdown",
+                    "id": "breed",
+                    "label": "Dog Breed",
+                    "values":"${breedData.data}",
+                    "idKey": "id",
+                    "displayKey": "breedName",
+                    "valueOutBinding": "dogPost.ofBreed.id",
+                    "required": "true"
+                },
+                {
+                    "type": "number",
+                    "id": "weight",
+                    "label": "Weight (lbs)",
+                    "valueOutBinding": "dogPost.weight",
+                    "required": "true",
+                    "minimumValue": "1"
+                },
+                {
+                    "type": "date",
+                    "id": "dateOfBirth",
+                    "label": "Date of Birth",
+                    "valueOutBinding": "dogPost.dateOfBirth",
+                    "required": "true",
+                    "dateFormat": "DAY"
+                },
+                {
+                    "type": "hidden",
+                    "id": "ownerID",
+                    "label": "Owner ID",
+                    "value": "${myData.id}",
+                    "valueOutBinding": "dogPost.ownedByWorker.id"
+                },
+                {
+                    "type": "hidden",
+                    "id": "approvedId",
+                    "label": "Approved",
+                    "value": "${true}",
+                    "valueOutBinding": "dogPost.approved"
+                }
+
+            ]
+        },
+        "footer": {
+            "type": "footer",
+            "children": [
+                {
+                    "type": "richText",
+                    "enabled": "false",
+                    "value": "Powered By WCP"
+                }
+            ]
+        }
+    }
+}
