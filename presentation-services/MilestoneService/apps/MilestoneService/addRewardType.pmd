@@ -37,6 +37,13 @@
                     "label": "Reward Type",
                     "valueOutBinding": "rewardTypePost.rewardName",
                     "required": "true"
+                },
+                {
+                    "type": "number",
+                    "id": "rewardTypeValue",
+                    "label": "Reward Type Value",
+                    "valueOutBinding": "rewardTypePost.value",
+                    "required": "true"
                 }
             ]
         },

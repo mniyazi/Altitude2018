@@ -67,6 +67,17 @@
                         },
                         {
                             "type": "column",
+                            "id": "name",
+                            "columnId": "name",
+                            "cellTemplate": {
+                                "id":"nameCell",
+                                "type":"text",
+                                "value": "${reward.awardTo.descriptor}"
+                            },
+                            "label":"Worker Name"
+                        },
+                        {
+                            "type": "column",
                             "id": "id",
                             "columnId": "id",
                             "cellTemplate": {

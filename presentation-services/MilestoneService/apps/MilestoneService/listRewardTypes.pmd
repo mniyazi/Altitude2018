@@ -65,6 +65,17 @@
                                 "value": "${rewardType.rewardName}"
                             },
                             "label":"Reward Type Name"
+                        },
+                        {
+                            "type": "column",
+                            "id": "value",
+                            "columnId": "value",
+                            "cellTemplate": {
+                                "id":"valueCell",
+                                "type":"number",
+                                "value": "${rewardType.value}"
+                            },
+                            "label":"Reward Type Value"
                         }
 
                     ]

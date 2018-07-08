@@ -22,7 +22,7 @@
             {
                 "name" : "rewardsPost",
                 "baseUrlType" : "function-service",
-                "url" : "71d57c52-2feb-4046-88c9-8994d333418a/discount?date=2017-15-07&type=${rewardsPost.ofType.id}&years=${rewardsPost.condition}",
+                "url" : "71d57c52-2feb-4046-88c9-8994d333418a/discount?date=2017-11-15&type=${rewardsPost.ofType.id}&years=1",
                 "authType" : "sso"
             }
         ]
@@ -62,9 +62,9 @@
                 {
                     "type": "number",
                     "id": "conditionAnniversary",
-                    "label": "Anniversary Years",
                     "valueOutBinding": "rewardsPost.condition",
-                    "required": "false"
+                    "label": "Anniversary Years",
+                    "required": "true"
                 }
             ]
         },
