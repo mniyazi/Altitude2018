@@ -35,6 +35,7 @@ public class Reward {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class AwardTo {
         private String id ;
+        private String descriptor;
 
         public String getId() {
             return id;
@@ -42,6 +43,14 @@ public class Reward {
 
         public void setId(String id) {
             this.id = id;
+        }
+
+        public String getDescriptor() {
+            return descriptor;
+        }
+
+        public void setDescriptor(String descriptor) {
+            this.descriptor = descriptor;
         }
     }
 

@@ -106,10 +106,8 @@ public class NotificationHandler implements RequestHandler {
 
     private String getNotificationBody(Reward reward, String token) {
 
-        Worker worker = getWorker(reward.getAwardTo().getId(),token);
-
         StringBuilder builder = new StringBuilder();
-        builder.append("Hi ").append(worker.getDescriptor()).append(",").append("<BR/>").append("<BR/>");
+        builder.append("Hi ").append(reward.getAwardTo().getDescriptor()).append(",").append("<BR/>").append("<BR/>");
         builder.append("Happy anniversary! Thank you for the all of the contributions you have made in making our company successful.").append("<BR/>");
         builder.append("Here please find your reward ").append(reward.getOfType().getDescriptor().toLowerCase()).append(":")
                 .append(reward.getCode()).append("<BR/>").append("<BR/>");
@@ -117,12 +115,5 @@ public class NotificationHandler implements RequestHandler {
         builder.append("Workday Employee Reward Program");
 
         return builder.toString();
-    }
-
-    private Worker getWorker(String id, String token) {
-        HttpGet get = new HttpGet("https://api.workday.com/common/v1/workers/"+id);
-        get.setHeader("Authorization", token);
-
-        return readObject(executeHttpRequest(get).getBody(),Worker.class) ;
     }
 }
