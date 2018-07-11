@@ -1,6 +1,11 @@
 {
     "id": "adminLandingPage",
     "endPoints": [
+        {
+            "name" : "mediaData",
+            "authType" : "sso",
+            "url" : "https://api.workday.com/media/v1/embeds"
+        }
     ],
     "presentation": {
         "title": {
@@ -67,6 +72,11 @@
                         }
 
                     ]
+                },
+                {
+                    "id" : "workdayVideo",
+                    "type" : "mediaItem",
+                    "mediaId" : "${mediaData.data[0].source.id}"
                 }
 
             ]

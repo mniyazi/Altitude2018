@@ -22,8 +22,27 @@
             {
                 "name" : "rewardsPost",
                 "baseUrlType" : "function-service",
-                "url" : "71d57c52-2feb-4046-88c9-8994d333418a/discount?date=2017-11-15&type=${rewardsPost.ofType.id}&years=1",
+                "url" : "71d57c52-2feb-4046-88c9-8994d333418a/discount",
                 "authType" : "sso"
+            },
+            {
+                "name": "transitionOutboundVars",
+                "type": "outboundVariable",
+                "variableScope": "flow",
+                "values": [
+                    {
+                        "outboundPath": "date",
+                        "value": "2018-06-01"
+                    },
+                    {
+                        "outboundPath":"type",
+                        "value": "fcd2a2d9bcba819c9b49aab56100dd04"
+                    },
+                    {
+                        "outboundPath":"years",
+                        "value": "1"
+                    }
+                ]
             }
         ]
     },
